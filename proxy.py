@@ -15,9 +15,9 @@ def hexdump(src, length=16, show=True):
         word = str(src[i:i+length])
 
         printable = word.translate(HEX_FILTER)
-        hexa = ' '.join([f'{ord(c):o2X}' for c in word])
+        hexa = ' '.join([f'{ord(c):02x}' for c in word])
         hexwidth = length*3
-        results.append(f'{i:o4x} {hexa:<{hexwidth}} {printable}')
+        results.append(f'{i:04x} {hexa:<{hexwidth}} {printable}')
     if show:
         for line in results:
             print(line)
@@ -27,7 +27,7 @@ def hexdump(src, length=16, show=True):
 def receive_from(connection):
     buffer = b""
     # connection timeout might need raised for longer distance
-    connection.settimeout(5)
+    connection.settimeout(10)
     try:
         while True:
             data = connection.recv(4096)
