@@ -13,7 +13,8 @@ def ssh_command(ip, port, user, passwd, cmd):
             print(line.strip())
 
 if __name__ == '__main__':
-    import getpass# user = getpass.getuser()
+    import getpass
+    # user = getpass.getuser()
     user = input('Username: ')
     password = getpass.getpass()
 
